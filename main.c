@@ -2,7 +2,7 @@
 Universidade Federal Rural de Pernambuco
 Discente: Ewerton Queiroz
 Disciplina: Algoritmos e Estruturas de Dados
-
+Data: 28/08/2016
 Atividade: EP0
 
 OBS: O programa não cumpre o requisito de realizar operações apenas no trecho
