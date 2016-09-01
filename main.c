@@ -4,9 +4,17 @@ Discente: Ewerton Queiroz
 Disciplina: Algoritmos e Estruturas de Dados
 Data: 28/08/2016
 Atividade: EP0
-OBS: O programa não cumpre o requisito de realizar operações apenas no trecho
-     afetado pela avalanche, consequentemente, a saída do mesmo não informa
-     onde se iniciou a avalanche, informa apenas a pista completamente corrigida.
+OBS: A saída do programa não apresenta o início da avalanche de 0 à N, sendo N o tamanho do vetor.
+    Ele apresenta o índice do vetor_pista onde se iniciou a avalanche.
+    A função checar_avalanche está com problemas e eu não sei como corrigí-los, se o senhor puder
+    me dar um feedback sobre o que tem de errado com ela, eu ficaria muito agradecido.
+
+    Ocorre o seguinte:
+        Há momento que o vetor aux não é ordenado dentro dela, consequentemente, no momento que
+        ocorre as comparações com o trecho do vetor_pista, não são encontradas diferenças e é
+        devolvido -1 incorretamente. Eu tenho um exemplo de arquivo ao qual utilizei para testes.
+        Caso queira conferir está no seguinte link:
+                https://github.com/EwertonQueiroz/AED-EP0/blob/master/pista2
 */
 
 #include <stdio.h>
@@ -56,7 +64,7 @@ void ordenar_selecao (int v[], int inicio, int tamanho) {
 }
 
 /**
-Esta função é exclusivamente para testes. Ela serve para visualizar como está o vetor vetor_pista.*/
+Esta função é exclusivamente para testes. Ela serve para visualizar como está o vetor vetor_pista.    *
 void imprimir_vetor_teste (int v[], int tamanho) {
     int a;
     for (a = 0; a < tamanho; a++) {
@@ -69,7 +77,7 @@ void imprimir_vetor_teste (int v[], int tamanho) {
 void imprimir_vetor (int v[], int inicio, int tamanho) {
     int a;
 
-    printf("%d ", inicio);
+    printf ("%d ", inicio);
 
     for (a = inicio; a <= tamanho; a++) {
         printf ("%d ", v[a]);
@@ -78,6 +86,11 @@ void imprimir_vetor (int v[], int inicio, int tamanho) {
     printf ("\n\n");
 }
 
+/**
+Esta função copia a pista para o vetor aux, ordena o vetor aux e depois compara
+com os elementos do vetor_pista, caso encontre alguma diferença, ou seja, caso
+ocorreu uma avalanche na pista, é devolvida a posição onde a avalanche ocorreu.
+*/
 int checar_avalanche (int v[], int inicio, int tamanho, int a[]) {
     int i;
 
@@ -102,7 +115,7 @@ Esta função realiza os reparos na pista da seguinte forma:
 a primeira e a última altitude.
 Após isso, é utilizado o algoritmo de ordenação por seleção para ordenar as altitudes
 da pista. Para a pista ser ordenada corretamente, ou seja, ordenar sem considerar o
-valor que indica o tamanho da mesma, é utilizada a variável "linha_inicio".
+valor que indica o tamanho da mesma, para isso é utilizada a variável "linha_inicio".
 */
 void reparar_pista (int v[]) {
     int linha_tamanho = v[0];
@@ -147,15 +160,9 @@ caso o arquivo esteja no mesmo diretório do executável,
 seja informado no parâmetro da função ler_arquivo().
 */
 int main() {
-    ler_arquivo ("pista");
-
-//    imprimir_vetor_teste(vetor_pista, z);
-
-//    printf("\n\n%d\n\n", checar_avalanche(vetor_pista, 7, 8, aux));
-//
-//    imprimir_vetor_teste(&aux, z);
+    ler_arquivo ("pista2");
 
     reparar_pista (vetor_pista);
-    //imprimir_vetor_teste(vetor_pista, z);
+
     return 0;
 }
