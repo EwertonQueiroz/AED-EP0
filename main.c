@@ -160,7 +160,7 @@ caso o arquivo esteja no mesmo diretório do executável,
 seja informado no parâmetro da função ler_arquivo().
 */
 int main() {
-    ler_arquivo ("pista2");
+    ler_arquivo ("pista");
 
     reparar_pista (vetor_pista);
 
